@@ -39,6 +39,14 @@ class Node:
             tree = tree + self.inOrder(root.right)
         return tree
 
+    def preOrder(self, root):
+        tree = []
+        if root:
+            tree.append(root.data)
+            tree = tree + self.preOrder(root.left)
+            tree = tree + self.preOrder(root.right)
+        return tree
+
 
 root = Node(12)
 root.insert(6)
@@ -48,3 +56,4 @@ root.insert(7)
 root.insert(13)
 root.insert(18)
 print(root.inOrder(root))
+print(root.preOrder(root))
