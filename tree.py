@@ -30,9 +30,21 @@ class Node:
         else:
             self.data = data
 
+    # inOrder tranversal goes from left subtree -> root -> right subtree
+    def inOrder(self, root):
+        tree = []
+        if root:
+            tree = self.inOrder(root.left)
+            tree.append(root.data)
+            tree = tree + self.inOrder(root.right)
+        return tree
+
 
 root = Node(12)
 root.insert(6)
 root.insert(14)
 root.insert(3)
-root.printTree()
+root.insert(7)
+root.insert(13)
+root.insert(18)
+print(root.inOrder(root))
