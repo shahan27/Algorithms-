@@ -8,8 +8,31 @@ class Node:
         self.right = None
 
     def printTree(self):
+        if self.left:
+            self.left.printTree()
         print(self.data)
+        if self.right:
+            self.right.printTree()
+
+    def insert(self, data):
+        # check if parent node exist
+        if self.data:
+            if self.data < data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.insert(data)
+            elif self.data > data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
 
 
-root = Node(20)
+root = Node(12)
+root.insert(6)
+root.insert(14)
+root.insert(3)
 root.printTree()
